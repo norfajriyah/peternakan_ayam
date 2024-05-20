@@ -48,27 +48,32 @@ class DocController extends Controller
             return response()->json($validation->errors(), 422);
         }
 
-        $doc = Doc::create([
-            'user_id' => auth()->user()->id,
-            'tanggal' => $request->tanggal,
-            'distributor' => $request->distributor,
-            'jns_ayam' => $request->jns_ayam,
-            'jumlah_ayam' => $request->jumlah_ayam,
-            'harga_kontrak' => $request->harga_kontrak,
-            'total_harga' => $request->total_harga,
-        ]);
-        
-        if ($doc) {
+        try {
+            $doc = Doc::create([
+                'user_id' => auth()->user()->id,
+                'tanggal' => $request->tanggal,
+                'distributor' => $request->distributor,
+                'jns_ayam' => $request->jns_ayam,
+                'jumlah_ayam' => $request->jumlah_ayam,
+                'harga_kontrak' => $request->harga_kontrak,
+                'total_harga' => $request->total_harga,
+            ]);
+            
+            if ($doc) {
+                return response()->json([
+                    'success' => true,
+                    'message' =>'Tambah data doc sukses',
+                    'data' => $doc
+                    ],200);
+            }
+        } catch (\Throwable $th) {
             return response()->json([
-                'success' => true,
-                'message' =>'Tambah data doc sukses',
-                'data' => $doc
-                ],200);
+                'success' => false,
+                'message' => $th->getMessage()
+            ], 422);
         }
 
-        return response()->json([
-            'success' => false,
-        ], 422);
+        
         
     }
 
