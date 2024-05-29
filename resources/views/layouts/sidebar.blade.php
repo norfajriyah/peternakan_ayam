@@ -6,7 +6,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <div class="sidebar-brand-text mx-3">Karang Broiler <sup>Indah</sup></div>
   </a>
   
   <!-- Divider -->
@@ -19,11 +19,35 @@
       <span>Dashboard</span></a>
   </li>
   
-  {{-- <li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="{{ route('products') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Product</span></a>
-  </li> --}}
+      <span>DOC</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('perkembangan') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Perkembangan</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('pakan') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Pakan</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('kesehatan') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Kesehatan</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('penjualan') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Penjualan</span></a>
+  </li>
   
   <li class="nav-item">
     <a class="nav-link" href="/profile">

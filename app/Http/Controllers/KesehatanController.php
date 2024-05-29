@@ -88,14 +88,6 @@ class KesehatanController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kesehatan $kesehatan)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Kesehatan $kesehatan)
@@ -156,4 +148,61 @@ class KesehatanController extends Controller
             ],200);
         }
     }
+    public function showKesehatan(){
+        $kesehatan = Kesehatan::all();
+        return view('kesehatan.index', ['kesehatan'=> $kesehatan]);
+    }
+
+    public function detail($id){
+        $kesehatan = Kesehatan::find($id);
+        return view('kesehatan.edit', ['kesehatan'=>  $kesehatan]);
+    }
+
+    public function edit($id, Request $request){
+
+        $data = Kesehatan::find($id);
+
+        if($request->doc_id != null) {
+            $data->doc_id = $request->doc_id;
+        }
+
+        if($request->hari_ke != null) {
+            $data->hari_ke = $request->hari_ke;
+        }
+
+        if($request->tanggal != null) {
+            $data->tanggal = $request->tanggal;
+        }
+        if($request->jns_obat_pagi != null) {
+            $data->jns_obat_pagi = $request->jns_obat_pagi;
+        }
+        if($request->jns_obat_malam != null) {
+            $data->jns_obat_malam = $request->jns_obat_malam;
+        }
+        if($request->jns_obat_hama != null) {
+            $data->jns_obat_hama = $request->jns_obat_hama;
+        }
+        if($request->keterangan != null) {
+            $data->keterangan = $request->keterangan;
+        }
+
+        $data->update([
+            'user_id' => session("user_id"),
+            'doc_id' => $data->doc_id,
+            'tanggal' => $data->tanggal,
+            'hari_ke' => $data->hari_ke,
+            'jns_obat_pagi' => $data->jns_obat_pagi,
+            'jns_obat_malam' => $data->jns_obat_malam,
+            'jns_obat_hama' => $data->jns_obat_hama,
+            'keterangan' => $data->keterangan
+        ]);
+        return redirect('kesehatan');
+    }
+    public function hapus($id) {
+        $kesehatan = Kesehatan::find($id);
+        $kesehatan->delete();
+        return redirect('kesehatan');
+
+    }
+
 }

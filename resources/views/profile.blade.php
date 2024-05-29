@@ -28,7 +28,7 @@
                         <input type="text" name="email" disabled class="form-control" value="{{ $user["email"] }}" placeholder="Email">
                     </div>
                 </div>
-                <div class="row mt-2">
+                {{-- <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="labels">Phone</label>
                         <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="">
@@ -37,9 +37,9 @@
                         <label class="labels">Address</label>
                         <input type="text" name="address" class="form-control" value="" placeholder="Address">
                     </div>
-                </div>
+                </div> --}}
                  
-                <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                {{-- <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div> --}}
             </div>
         </div>
     </div>   

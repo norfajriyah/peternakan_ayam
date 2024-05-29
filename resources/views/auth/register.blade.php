@@ -1,4 +1,3 @@
-//resources/views/auth/register.blade.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin 2 - Register</title>
+  <title>Peternakan - Register</title>
   <!-- Custom fonts for this template-->
   <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -21,7 +20,7 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          {{-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> --}}
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">

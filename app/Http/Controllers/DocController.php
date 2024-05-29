@@ -70,7 +70,7 @@ class DocController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => $th->getMessage()
-            ], 422);
+            ], 500);
         }
 
         
@@ -88,14 +88,6 @@ class DocController extends Controller
                 'data' => $doc
             ],200);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Doc $doc)
-    {
-        //
     }
 
     /**
@@ -153,4 +145,59 @@ class DocController extends Controller
             ],200);
         }
     }
+
+    public function showDoc(){
+        $docs = Doc::all();
+        return view('products.index', ['products'=> $docs]);
+    }
+
+    public function detail($id) {
+        $doc = Doc::find($id);
+        return view('products.edit', ['doc' => $doc]);
+    }
+
+    public function edit($id, Request $request) {
+
+        $data = Doc::find($id);
+
+        if($request->tanggal != null) {
+            $data->tanggal = $request->tanggal;
+        }
+        if($request->distributor != null) {
+            $data->distributor = $request->distributor;
+        }
+        if($request->jns_ayam != null) {
+            $data->jns_ayam = $request->jns_ayam;
+        }
+        if($request->jumlah_ayam != null) {
+            $data->jumlah_ayam = $request->jumlah_ayam;
+        }
+        if($request->harga_kontrak != null) {
+            $data->harga_kontrak = $request->harga_kontrak;
+        }
+        if($request->total_harga != null) {
+            $data->total_harga = $request->total_harga;
+        }
+
+        $data->update([
+            'user_id' =>session("user_id"),
+            'tanggal' => $data->tanggal,
+            'distributor' => $data->distributor,
+            'jns_ayam' => $data->jns_ayam,
+            'jumlah_ayam' => $data->jumlah_ayam,
+            'harga_kontrak' => $data->harga_kontrak,
+            'total_harga' => $data->total_harga,
+        ]);
+
+        return redirect("products");
+
+    }
+
+    public function hapus($id) {
+        $doc = Doc::find($id);
+        $doc->delete();
+        return redirect("products");
+
+    }
+    
 }

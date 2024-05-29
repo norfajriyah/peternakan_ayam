@@ -98,14 +98,6 @@ class PenjualanController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Penjualan $penjualan)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Penjualan $penjualan)
@@ -154,7 +146,7 @@ class PenjualanController extends Controller
             'alamat' => $data->alamat,
             'nama_pembeli' => $data->nama_pembeli,
             'no_mobil' => $data->no_mobil,
-            'nama_driver' => $data->nama_pembeli,
+            'nama_driver' => $data->nama_driver,
             'jml_ayam_panen' => $data->jml_ayam_panen,
             'berat_rr' => $data->berat_rr,
             'harga_kg' => $data->harga_kg,
@@ -179,5 +171,73 @@ class PenjualanController extends Controller
                 'message' => 'Data berhasil di hapus'
             ],200);
         }
+    }
+    public function showPenjualan(){
+        $penjualan = Penjualan::all();
+        return view('penjualan.index', ['penjualan'=> $penjualan]);
+    }
+
+    public function detail($id){
+        $penjualan = Penjualan::find($id);
+        return view('penjualan.edit', ['penjualan' => $penjualan]);
+    }
+    public function edit($id, Request $request){
+        $data = Penjualan::find($id);
+
+        if($request->doc_id != null) {
+            $data->doc_id = $request->doc_id;
+        }
+        if($request->tanggal != null) {
+            $data->tanggal = $request->tanggal;
+        }
+        if($request->mitra != null) {
+            $data->mitra = $request->mitra;
+        }
+        if($request->alamat != null) {
+            $data->alamat = $request->alamat;
+        }
+        if($request->nama_pembeli != null) {
+            $data->nama_pembeli = $request->nama_pembeli;
+        }
+        if($request->no_mobile != null) {
+            $data->no_mobile = $request->no_mobile;
+        }
+        if($request->nama_driver != null) {
+            $data->nama_driver = $request->nama_driver;
+        }
+        if($request->jml_ayam_panen != null) {
+            $data->jml_ayam_panen = $request->jml_ayam_panen;
+        }
+        if($request->berat_rr != null) {
+            $data->berat_rr = $request->berat_rr;
+        }
+        if($request->harga_kg != null) {
+            $data->harga_kg = $request->harga_kg;
+        }
+        if($request->total_harga_jual != null) {
+            $data->total_harga_jual = $request->total_harga_jual;
+        }        
+
+        $data->update([
+            'user_id' => session("user_id"),
+            'doc_id' => $data->doc_id,
+            'tanggal' => $data->tanggal,
+            'mitra' => $data->mitra,
+            'alamat' => $data->alamat,
+            'nama_pembeli' => $data->nama_pembeli,
+            'no_mobil' => $data->no_mobil,
+            'nama_driver' => $data->nama_driver,
+            'jml_ayam_panen' => $data->jml_ayam_panen,
+            'berat_rr' => $data->berat_rr,
+            'harga_kg' => $data->harga_kg,
+            'total_harga_jual' => $data->total_harga_jual
+        ]);
+        return redirect('penjualan');
+    }
+    public function hapus($id) {
+        $penjualan = Penjualan::find($id);
+        $penjualan->delete();
+        return redirect("penjualan");
+
     }
 }

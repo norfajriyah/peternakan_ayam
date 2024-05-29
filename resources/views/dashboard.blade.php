@@ -5,6 +5,6 @@
   
 @section('contents')
   <div class="row">
-    Dashboard
+    Karang Indah Broiler
   </div>
 @endsection
