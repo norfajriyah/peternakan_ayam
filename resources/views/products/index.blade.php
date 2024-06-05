@@ -20,7 +20,7 @@
         <thead class="table-primary">
             <tr>
                 <th>No.</th>
-                <th>periode doc</th>
+                <th>periode</th>
                 <th>tanggal</th>
                 <th>distributor</th>
                 <th>jenis ayam</th>
@@ -35,7 +35,7 @@
                 @foreach($products as $rs)
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $rs->id }}</td>
+                        <td class="align-middle">{{ $rs->periode }}</td>
                         <td class="align-middle">{{ $rs->tanggal }}</td>
                         <td class="align-middle">{{ $rs->distributor }}</td>
                         <td class="align-middle">{{ $rs->jns_ayam }}</td>  

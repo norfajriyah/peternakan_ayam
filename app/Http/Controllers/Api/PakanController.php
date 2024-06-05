@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Kesehatan;
 use App\Models\Pakan;
 use App\Http\Requests\StorePakanRequest;
@@ -137,58 +138,5 @@ class PakanController extends Controller
                 'message' => 'Data berhasil di hapus'
             ],200);
         }
-    }
-    public function showPakan(){
-        $pakan = Pakan::all();
-        return view('pakan.index', ['pakan'=> $pakan]);
-    }
-
-    public function detail ($id){
-        $pakan = Pakan::find($id);
-        return view('pakan.edit', ['pakan'=>  $pakan]);
-    }
-
-    public function edit($id, Request $request){
-
-        $data = Pakan::find($id);
-
-        if($request->doc_id != null) {
-            $data->doc_id = $request->doc_id;
-        }
-        if($request->tanggal != null) {
-            $data->tanggal = $request->tanggal;
-        }
-        if($request->jenis_pakan != null) {
-            $data->jenis_pakan = $request->jenis_pakan;
-        }
-        if($request->jumlah_pakan != null) {
-            $data->jumlah_pakan = $request->jumlah_pakan;
-        }
-        if($request->hrg_pakan_satuan != null) {
-            $data->hrg_pakan_satuan = $request->hrg_pakan_satuan;
-        }
-        if($request->total_harga != null) {
-            $data->total_harga = $request->total_harga;
-        }
-
-        $data ->update([
-            'user_id' => session("user_id"),
-            'doc_id' => $data->doc_id,
-            'tanggal' => $data->tanggal,
-            'jenis_pakan' => $data->jenis_pakan,
-            'jumlah_pakan' => $data ->jumlah_pakan,
-            'hrg_pakan_satuan' => $data->hrg_pakan_satuan,
-            'total_harga' => $data->total_harga
-        ]);
-
-        return redirect('pakan');
-        
-    }
-
-    public function hapus($id) {
-        $pakan = Pakan::find($id);
-        $pakan->delete();
-        return redirect('pakan');
-
     }
 }

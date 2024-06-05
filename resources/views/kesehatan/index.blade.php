@@ -20,7 +20,7 @@
         <thead class="table-primary">
             <tr>
                 <th>No.</th>
-                <th>periode doc</th>
+                <th>periode</th>
                 <th>tanggal</th>
                 <th>hari</th>
                 <th>obat pagi</th>
@@ -35,7 +35,7 @@
                 @foreach($kesehatan as $rs)
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $rs->doc_id }}</td>
+                        <td class="align-middle">{{ $rs->periode}}</td>
                         <td class="align-middle">{{ $rs->tanggal }}</td>
                         <td class="align-middle">{{ $rs->hari_ke }}</td>
                         <td class="align-middle">{{ $rs->jns_obat_pagi }}</td>  

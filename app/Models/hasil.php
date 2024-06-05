@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Doc extends Model
+class hasil extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'periode',
+        'doc_id',
         'user_id',
         'tanggal',
-        'distributor',
-        'jns_ayam',
-        'jumlah_ayam',
-        'harga_kontrak',
-        'total_harga',
+        'bobot_rr',
+        'fcr',
+        'umur_panen',
+        'deplesi',
+        'performa',
+        'kategori'
     ];
 }

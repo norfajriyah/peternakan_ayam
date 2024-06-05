@@ -20,33 +20,39 @@
   </li>
   
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('products') }}">
+    <a class="nav-link" href="{{ route('products.index') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>DOC</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('perkembangan') }}">
+    <a class="nav-link" href="{{ route('perkembangan.index') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Perkembangan</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('pakan') }}">
+    <a class="nav-link" href="{{ route('pakan.index') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Pakan</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('kesehatan') }}">
+    <a class="nav-link" href="{{ route('kesehatan.index') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Kesehatan</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('penjualan') }}">
+    <a class="nav-link" href="{{ route('penjualan.index') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Penjualan</span></a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('hasil.index') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Indeks Performa</span></a>
   </li>
   
   <li class="nav-item">

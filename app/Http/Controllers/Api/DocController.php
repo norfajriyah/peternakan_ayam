@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Doc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -47,9 +48,15 @@ class DocController extends Controller
         if ($validation->fails()) {
             return response()->json($validation->errors(), 422);
         }
+        // pr-1-0624
+        $periodNumber = Doc::all()->count() + 1;
+        $date=date_create($request->tanggal);
+        $tgl = date_format($date, "md");
+        $periode = "pr$periodNumber$tgl";
 
         try {
             $doc = Doc::create([
+                'periode' => $periode,
                 'user_id' => auth()->user()->id,
                 'tanggal' => $request->tanggal,
                 'distributor' => $request->distributor,
@@ -144,60 +151,6 @@ class DocController extends Controller
                 'message' => 'Data berhasil di hapus'
             ],200);
         }
-    }
-
-    public function showDoc(){
-        $docs = Doc::all();
-        return view('products.index', ['products'=> $docs]);
-    }
-
-    public function detail($id) {
-        $doc = Doc::find($id);
-        return view('products.edit', ['doc' => $doc]);
-    }
-
-    public function edit($id, Request $request) {
-
-        $data = Doc::find($id);
-
-        if($request->tanggal != null) {
-            $data->tanggal = $request->tanggal;
-        }
-        if($request->distributor != null) {
-            $data->distributor = $request->distributor;
-        }
-        if($request->jns_ayam != null) {
-            $data->jns_ayam = $request->jns_ayam;
-        }
-        if($request->jumlah_ayam != null) {
-            $data->jumlah_ayam = $request->jumlah_ayam;
-        }
-        if($request->harga_kontrak != null) {
-            $data->harga_kontrak = $request->harga_kontrak;
-        }
-        if($request->total_harga != null) {
-            $data->total_harga = $request->total_harga;
-        }
-
-        $data->update([
-            'user_id' =>session("user_id"),
-            'tanggal' => $data->tanggal,
-            'distributor' => $data->distributor,
-            'jns_ayam' => $data->jns_ayam,
-            'jumlah_ayam' => $data->jumlah_ayam,
-            'harga_kontrak' => $data->harga_kontrak,
-            'total_harga' => $data->total_harga,
-        ]);
-
-        return redirect("products");
-
-    }
-
-    public function hapus($id) {
-        $doc = Doc::find($id);
-        $doc->delete();
-        return redirect("products");
-
     }
     
 }

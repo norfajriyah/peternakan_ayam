@@ -20,7 +20,7 @@
         <thead class="table-primary">
             <tr>
                 <th>No.</th>
-                <th>periode doc</th>
+                <th>periode</th>
                 <th>tanggal</th>
                 <th>jumlah populasi</th>
                 <th>strain</th>
@@ -40,7 +40,7 @@
                 @foreach($perkembangans as $rs)
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $rs->doc_id }}</td>
+                        <td class="align-middle">{{ $rs->periode }}</td>
                         <td class="align-middle">{{ $rs->tanggal }}</td>
                         <td class="align-middle">{{ $rs->jml_populasi }}</td>
                         <td class="align-middle">{{ $rs->atrain }}</td>  

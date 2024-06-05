@@ -20,17 +20,19 @@
         <thead class="table-primary">
             <tr>
                 <th>No.</th>
-                <th>periode doc</th>
+                <th>periode</th>
                 <th>tanggal</th>
+                <th>umur</th>
                 <th>mitra</th>
                 <th>alamat</th>
-                <th>nama pembeli</th>
+                <th>pembeli</th>
                 <th>no mobil</th>
-                <th>nama driver</th>
-                <th>jumlah ayam terpanen</th>
+                <th>driver</th>
+                <th>jumlah terpanen</th>
                 <th>berat rata-rata</th>
+                <th>total berat</th>
                 <th>harga/kg</th>
-                <th>total harga jual</th>
+                <th>total harga</th>
                 <th>action</th>
             </tr>
         </thead>
@@ -39,8 +41,9 @@
                 @foreach($penjualan as $rs)
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $rs->doc_id }}</td>
+                        <td class="align-middle">{{ $rs->periode }}</td>
                         <td class="align-middle">{{ $rs->tanggal }}</td>
+                        <td class="align-middle">{{ $rs->umur }}</td>
                         <td class="align-middle">{{ $rs->mitra }}</td>
                         <td class="align-middle">{{ $rs->alamat }}</td>  
                         <td class="align-middle">{{ $rs->nama_pembeli }}</td>
@@ -48,6 +51,7 @@
                         <td class="align-middle">{{ $rs->nama_driver }}</td>  
                         <td class="align-middle">{{ $rs->jml_ayam_panen }}</td>  
                         <td class="align-middle">{{ $rs->berat_rr }}</td>
+                        <td class="align-middle">{{ $rs->total_berat }}</td>
                         <td class="align-middle">{{ $rs->harga_kg }}</td>
                         <td class="align-middle">{{ $rs->total_harga_jual }}</td>
                         <td class="align-middle">

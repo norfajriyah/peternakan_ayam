@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Perkembangan;
 use App\Http\Requests\StorePerkembanganRequest;
 use App\Http\Requests\UpdatePerkembanganRequest;
@@ -15,7 +16,7 @@ class PerkembanganController extends Controller
      */
     public function index()
     {
-        $perkembangans = Perkembangan::all();
+        $perkembangans = Perkembangan::orderBy('id', 'desc')->first();
         return response()->json([
             'success' => true,
             'data' => $perkembangans
@@ -178,82 +179,5 @@ class PerkembanganController extends Controller
                 'message' => 'Data berhasil di hapus'
             ],200);
         }
-    }
-
-    public function showPerkembangan(){
-        $perkembangans = Perkembangan::all();
-        return view('perkembangan.index', ['perkembangans'=> $perkembangans]);
-    }
-
-    public function detail($id){
-        $perkembangan = Perkembangan::find($id);
-        return view('perkembangan.edit', ['perkembangan' => $perkembangan]);
-    }
-
-    public function edit($id, Request $request){
-
-        $data = Perkembangan::find($id);
-
-        if($request->doc_id != null) {
-            $data->doc_id = $request->doc_id;
-        }
-        if($request->tanggal != null) {
-            $data->tanggal = $request->tanggal;
-        }
-        if($request->jml_populasi != null) {
-            $data->jml_populasi = $request->jml_populasi;
-        }
-        if($request->atrain != null) {
-            $data->atrain = $request->atrain;
-        }
-        if($request->bw_datang != null) {
-            $data->bw_datang = $request->bw_datang;
-        }
-        if($request->kondisi != null) {
-            $data->kondisi = $request->kondisi;
-        }
-        if($request->umur != null) {
-            $data->umur = $request->umur;
-        }
-        if($request->std_feed != null) {
-            $data->std_feed = $request->std_feed;
-        }
-        if($request->act_feed != null) {
-            $data->act_feed = $request->act_feed;
-        }
-        if($request->mati_deplesi != null) {
-            $data->mati_deplesi = $request->mati_deplesi;
-        }
-        if($request->culling_deplesi != null) {
-            $data->culling_deplesi = $request->culling_deplesi;
-        }
-        if($request->afkir_deplesi != null) {
-            $data->afkir_deplesi = $request->afkir_deplesi;
-        }
-
-        $data->update([
-            'user_id' => session("user_id"),
-            'doc_id' => $data->doc_id,
-            'tanggal' => $data->tanggal,
-            'jml_populasi' => $data->jml_populasi,
-            'atrain' => $data->atrain,
-            'bw_datang' => $data->bw_datang,
-            'kondisi' => $data->kondisi,
-            'umur' => $data->umur,
-            'std_feed' => $data->std_feed,
-            'act_feed' => $data->act_feed,
-            'mati_deplesi' => $data->mati_deplesi,
-            'culling_deplesi' => $data->culling_deplesi,
-            'afkir_deplesi' => $data->afkir_deplesi
-        ]);
-
-        return redirect('perkembangan');
-    }
-
-    public function hapus($id) {
-        $perkembangan = Perkembangan::find($id);
-        $perkembangan->delete();
-        return redirect("products");
-
     }
 }

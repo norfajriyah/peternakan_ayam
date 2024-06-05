@@ -11,22 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penjualans', function (Blueprint $table) {
+        Schema::create('hasils', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
             $table->foreignId('doc_id')->constrained('docs')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('tanggal');
-            $table->integer('umur');
-            $table->string('mitra', 50);
-            $table->string('alamat', 50);
-            $table->string('nama_pembeli', 50);
-            $table->string('no_mobil', 10);
-            $table->string('nama_driver', 50);
-            $table->integer('jml_ayam_panen');
-            $table->float('berat_rr');
-            $table->float('total_berat');
-            $table->integer('harga_kg');
-            $table->integer('total_harga_jual');
+            $table->float('bobot_rr');
+            $table->float('fcr');
+            $table->float('umur_panen');
+            $table->float('deplesi');
+            $table->float('performa');
+            $table->enum('kategori', ['Sangat Baik', 'Baik', 'Kurang Baik']);
             $table->timestamps();
         });
     }
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penjualans');
+        Schema::dropIfExists('hasils');
     }
 };

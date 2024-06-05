@@ -21,7 +21,7 @@
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="labels">Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="first name" value="{{ $user["name"] }}">
+                        <input type="text" name="name" disabled class="form-control" placeholder="first name" value="{{ $user["name"] }}">
                     </div>
                     <div class="col-md-6">
                         <label class="labels">Email</label>

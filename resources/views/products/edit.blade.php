@@ -5,7 +5,7 @@
 @section('contents')
     <h1 class="mb-0">Edit Data Day Old Chick</h1>
     <hr />
-    <form action="{{ route('products.edit', $doc->id) }}" method="POST">
+    <form action="{{ route('products.update', $doc->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">
