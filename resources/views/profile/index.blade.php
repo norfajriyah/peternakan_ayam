@@ -4,9 +4,8 @@
 @section('title', 'Profile')
   
 @section('contents')
-    <h1 class="mb-0">Profile</h1>
+    {{-- <h1 class="mb-0">Profile</h1> --}}
     <hr />
- 
     <form method="POST" enctype="multipart/form-data" id="profile_setup_frm" action="" >
     <div class="row">
         <div class="col-md-12 border-right">
@@ -23,23 +22,24 @@
                         <label class="labels">Name</label>
                         <input type="text" name="name" disabled class="form-control" placeholder="first name" value="{{ $user["name"] }}">
                     </div>
+                </div>
+                <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="labels">Email</label>
                         <input type="text" name="email" disabled class="form-control" value="{{ $user["email"] }}" placeholder="Email">
                     </div>
                 </div>
-                {{-- <div class="row mt-2">
+                <div class="row mt-2">
                     <div class="col-md-6">
-                        <label class="labels">Phone</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="">
+                        <label class="labels">Password</label>
+                        <input type="text" name="password" disabled class="form-control" value="{{ $user["password"] }}" placeholder="Password">
                     </div>
-                    <div class="col-md-6">
-                        <label class="labels">Address</label>
-                        <input type="text" name="address" class="form-control" value="" placeholder="Address">
-                    </div>
-                </div> --}}
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{{route('profile.show', ['profile' => $user['id']])}}" type="button" class="btn btn-warning">Edit</a>
+                </div> 
                  
-                {{-- <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div> --}}
+                <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
         </div>
     </div>   

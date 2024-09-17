@@ -10,8 +10,8 @@
         @method('PUT')
         <div class="row">
             <div class="col mb-3">
-                <label class="form-label">tanggal</label>
-                <input type="text" name="tanggal" class="form-control" placeholder="tanggal" value="{{ $doc->tanggal }}" >
+                <label class="form-label">Tanggal</label>
+                <input type="date" name="tanggal" class="form-control" placeholder="tanggal" value="{{ $doc->tanggal }}" >
             </div>
             <div class="col mb-3">
                 <label class="form-label">distributor</label>
@@ -21,11 +21,15 @@
         <div class="row">
             <div class="col mb-3">
                 <label class="form-label">jenis ayam</label>
-                <input type="text" name="jns_ayam" class="form-control" placeholder="jenis ayam" value="{{ $doc->jns_ayam }}" >
+                <select name="jns_ayam" class="form-control">
+                    <option value="CP" {{ $doc->jns_ayam == 'CP' ? 'selected' : '' }}>CP</option>
+                    <option value="MB" {{ $doc->jns_ayam == 'MB' ? 'selected' : '' }}>MB</option>
+                    <option value="Wonokoyo" {{ $doc->jns_ayam == 'Wonokoyo' ? 'selected' : '' }}>Wonokoyo</option>
+                </select>
             </div>
             <div class="col mb-3">
                 <label class="form-label">jumlah ayam</label>
-                <textarea class="form-control" name="jumlah_ayam" placeholder="jumlah ayam" >{{ $doc->jumlah_ayam }}</textarea>
+                <input type="text" name="jumlah_ayam" class="form-control" placeholder="jumlah ayam" value="{{ $doc->jumlah_ayam }}" >
             </div>
         </div>
         <div class="row">
@@ -35,7 +39,7 @@
             </div>
             <div class="col mb-3">
                 <label class="form-label">total harga</label>
-                <textarea class="form-control" name="total_harga" placeholder="total harga" >{{ $doc->total_harga }}</textarea>
+                <input type="text" name="total_harga" class="form-control" placeholder="total harga" value="{{ $doc->total_harga }}" >
             </div>
         </div>
         <div class="row">

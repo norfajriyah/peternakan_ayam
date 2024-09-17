@@ -53,7 +53,7 @@ class HasilController extends Controller
         if($cekHitung !== null){
             return response()->json([
                 'success' => true,
-                'message' => 'data indeks performa pernah dihitung ges',
+                'message' => 'data indeks performa pernah dihitung',
                 'data' => $cekHitung
             ], 200);  
         };

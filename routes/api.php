@@ -12,6 +12,7 @@ use App\Http\Middleware\CekToken;
 use App\Models\Doc;
 use Illuminate\Support\Facades\Route;
 
+Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 

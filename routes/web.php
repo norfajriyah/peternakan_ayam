@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\PakanController;
 use App\Http\Controllers\Web\PenjualanController;
 use App\Http\Controllers\Web\PerkembanganController;
 use App\Http\Controllers\Web\ProductControllerWeb;
+use App\Http\Controllers\Web\ProfileController;
 use App\Http\Middleware\CekSession;
 
 Route::get('/', function () {
@@ -31,10 +32,9 @@ Route::middleware(CekSession::class)->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
- 
- 
-    Route::get('/profile', [AuthControllerWeb::class, 'profile'])->name('profile');
 
+    Route::resource('/profile', ProfileController::class)->middleware(CekSession::class);
+    // Route::get('profile',[ProfileController::class, 'index'])->middleware(CekSession::class);
     Route::resource('/products', DocController::class)->middleware(CekSession::class);
     Route::resource('/perkembangan', PerkembanganController::class)->middleware(CekSession::class);
     Route::resource('/pakan', PakanController::class)->middleware(CekSession::class);
