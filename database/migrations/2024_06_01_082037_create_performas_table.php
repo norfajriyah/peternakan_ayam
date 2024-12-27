@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('jumlahayam_awal');
             $table->integer('jumlahayam_akhir');
             $table->integer('umur_panen');
-            $table->integer('berat_panen');
-            $table->integer('jumlah_pakan');
+            $table->float('berat_panen');
+            $table->float('jumlah_pakan');
             $table->integer('ayam_mati');
             $table->integer('ayam_afkir');
             $table->timestamps();

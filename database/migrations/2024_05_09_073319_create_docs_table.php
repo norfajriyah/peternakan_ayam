@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('distributor', 50);
             $table->enum('jns_ayam', ['CP', 'MB', 'Wonokoyo']); // Adjust enum values as needed
             $table->integer('jumlah_ayam');
-            $table->string('harga_kontrak', 50);
-            $table->string('total_harga', 50);
+            $table->integer('harga_kontrak', );
+            $table->integer('total_harga', );
             $table->timestamps(); // Adds created_at and updated_at columns
         });
     }

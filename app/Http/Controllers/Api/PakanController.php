@@ -122,7 +122,7 @@ class PakanController extends Controller
         
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil mengupdate data'
+            'message' => 'Berhasil update data'
         ], 200);
     }
 

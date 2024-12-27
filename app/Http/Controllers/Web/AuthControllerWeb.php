@@ -44,8 +44,9 @@ class AuthControllerWeb extends Controller
             'email' => 'required',
             'password' => 'required'
         ])->validate();
-
+// dd($data);
         $user = User::where('email', $data['email'])->first();
+        if($user == null) return redirect()->back()->withErrors(['email'=> 'Email Tidak Terdaftar']);
        
         if (Hash::check($data['password'], $user->password)) {
             session()->put('user_id', $user->id);

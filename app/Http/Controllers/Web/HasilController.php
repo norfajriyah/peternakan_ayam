@@ -70,5 +70,9 @@ class HasilController extends Controller
     public function destroy(hasil $hasil)
     {
         //
+        $hasil->delete();
+        if($hasil) {
+            return redirect('hasil');
+        }
     }
 }

@@ -38,8 +38,6 @@
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="{{route('profile.show', ['profile' => $user['id']])}}" type="button" class="btn btn-warning">Edit</a>
                 </div> 
-                 
-                <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
         </div>
     </div>   
