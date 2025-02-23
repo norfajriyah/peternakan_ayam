@@ -89,11 +89,15 @@ class HasilController extends Controller
 
         $kategori = '';
         if ($IP > 400) {
+            $kategori = 'Istimewa';
+        } else if ($IP >= 351){
             $kategori = 'Sangat Baik';
-        } else if ($IP > 300){
-            $kategori = 'Baik';
-        } else if ($IP < 300) {
-            $kategori = 'Kurang Baik' ;
+        } else if ($IP >= 326) {
+            $kategori = 'Baik' ;
+        } else if ($IP >= 301) {
+            $kategori = 'Cukup';
+        }else if ($IP <300) {
+            $kategori = 'Kurang';
         }
 
         $hasil = hasil::create([
